@@ -15,30 +15,30 @@ module.exports = {
   module: {
     loaders: [
       {
-        test:/\.js$/,
-        loader:'eslint-loader',
-        enforce: "pre",
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
         include: [APP_DIR, TEST_DIR],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
       },
       {
-        test:/\.js$/,
-        loader:'babel-loader',
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
           presets: ['es2015']
         }
       },
       {
-        test:/\.(scss|sass)$/,
+        test: /\.(scss|sass)$/,
         loader: ExtractTextPlugin(
           'style-loader!css-loader!sass-loader?sourceMap'
         )
       },
       {
-        test:/\.css$/,
+        test: /\.css$/,
         loader: ExtractTextPlugin(
           'style-loader!css-loader?sourceMap'
         )
