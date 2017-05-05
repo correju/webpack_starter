@@ -27,6 +27,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        include: [APP_DIR, TEST_DIR],
         query: {
           presets: ['es2015']
         }
