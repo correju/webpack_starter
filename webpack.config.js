@@ -3,6 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const APP_DIR = path.resolve(__dirname, 'src')
+const APP_DIST = path.resolve(__dirname, 'dist')
 const TEST_DIR = path.resolve(__dirname, 'test')
 
 console.log(APP_DIR)
@@ -10,7 +11,7 @@ module.exports = {
   entry: APP_DIR + '/index.js',
   output: {
     filename: 'bundle.js',
-    path: APP_DIR + 'dist/'
+    path: APP_DIST
   },
   module: {
     loaders: [
