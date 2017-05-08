@@ -6,7 +6,9 @@
   "author": "Julian Correa Romero",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot --progress"
+    "start": "webpack-dev-server --hot --progress",
+    "build:prod": "cross-env NODE_ENV=production webpack",
+    "build:dev": "cross-env NODE_ENV=development webpack"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
