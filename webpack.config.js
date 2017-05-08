@@ -6,7 +6,27 @@ const APP_DIR = path.resolve(__dirname, 'src')
 const APP_DIST = path.resolve(__dirname, 'dist')
 const TEST_DIR = path.resolve(__dirname, 'test')
 
-console.log(APP_DIR)
+var NODE_ENV  = (process.env.NODE_ENV  || 'development')
+var isProd = (NODE_ENV === 'production')
+
+let plugins = [
+  new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  }),
+  new ExtractTextPlugin({
+    filename: 'css/index.css'
+  })
+]
+
+if (isProd) {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    compress: {
+      warnings: false
+    }
+  }))
+}
+
 module.exports = {
   entry: APP_DIR + '/index.js',
   output: {
@@ -57,13 +77,6 @@ module.exports = {
       poll: true
     }
   },
-  devtool: "inline-source-map",
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
-    new ExtractTextPlugin({
-      filename: 'css/index.css'
-    })
-  ]
+  devtool: isProd ? false : 'inline-source-map',
+  plugins
 }
